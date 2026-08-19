@@ -1,0 +1,9 @@
+{
+  "artboards": [
+    { "file": "Logo-A.dc.html", "x": 0, "y": 0, "w": 560, "h": 640 },
+    { "file": "Logo-B.dc.html", "x": 600, "y": 0, "w": 560, "h": 660 },
+    { "file": "Logo-C.dc.html", "x": 1200, "y": 0, "w": 560, "h": 600 },
+    { "file": "Main.dc.html", "x": 0, "y": 740, "w": 1440, "h": 900, "expand": "fill" }
+  ],
+  "launch": { "view": "canvas" }
+}

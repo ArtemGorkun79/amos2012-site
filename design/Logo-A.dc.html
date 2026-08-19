@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;700;900&family=Manrope:wght@400;500;600&display=swap');
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: 'Manrope', system-ui, sans-serif; }
+  </style>
+</helmet>
+<div style="display:flex; flex-direction:column; gap:24px; width:560px; padding:24px; background:oklch(97% 0.004 90); font-family:'Manrope', sans-serif;">
+
+  <div style="display:flex; flex-direction:column; gap:8px;">
+    <div style="font-size:12px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:oklch(45% 0.01 240);">Option A — Ascending Mark</div>
+    <div style="font-size:13px; color:oklch(45% 0.01 240); line-height:1.5;">Icon + wordmark. Two angled bars forming an upward apex — momentum and direction — with a warm accent tip.</div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:2px; border-radius:4px; overflow:hidden; border:1px solid oklch(90% 0.005 90);">
+    <div style="display:flex; align-items:center; justify-content:center; gap:18px; padding:56px 40px; background:{{teal}};">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 6L46 44H32L26 32L20 44H6L26 6Z" fill="oklch(97% 0.004 90)"/>
+        <rect x="23" y="6" width="6" height="6" fill="{{accent}}"/>
+      </svg>
+      <div style="display:flex; flex-direction:column; line-height:1;">
+        <div style="font-family:'Golos Text', sans-serif; font-weight:900; font-size:34px; letter-spacing:0.01em; color:oklch(97% 0.004 90);">AMOS</div>
+        <div style="font-family:'Golos Text', sans-serif; font-weight:600; font-size:14px; letter-spacing:0.28em; color:{{accent}}; margin-top:4px;">2012</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; justify-content:center; gap:18px; padding:56px 40px; background:oklch(99% 0.002 90);">
+      <svg width="52" height="52" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 6L46 44H32L26 32L20 44H6L26 6Z" fill="{{teal}}"/>
+        <rect x="23" y="6" width="6" height="6" fill="{{accent}}"/>
+      </svg>
+      <div style="display:flex; flex-direction:column; line-height:1;">
+        <div style="font-family:'Golos Text', sans-serif; font-weight:900; font-size:34px; letter-spacing:0.01em; color:{{teal}};">AMOS</div>
+        <div style="font-family:'Golos Text', sans-serif; font-weight:600; font-size:14px; letter-spacing:0.28em; color:{{accent}}; margin-top:4px;">2012</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; align-items:center; gap:16px; padding:20px; background:oklch(99% 0.002 90); border:1px solid oklch(90% 0.005 90); border-radius:4px;">
+    <svg width="28" height="28" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M26 6L46 44H32L26 32L20 44H6L26 6Z" fill="{{teal}}"/>
+      <rect x="23" y="6" width="6" height="6" fill="{{accent}}"/>
+    </svg>
+    <div style="font-size:12px; color:oklch(45% 0.01 240);">Icon alone works as a favicon / app tile at small sizes.</div>
+  </div>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"teal":{"editor":"color","default":"oklch(27% 0.045 195)"},"accent":{"editor":"color","default":"oklch(72% 0.13 55)"}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      teal: this.props.teal ?? 'oklch(27% 0.045 195)',
+      accent: this.props.accent ?? 'oklch(72% 0.13 55)'
+    };
+  }
+}
+</script>
+</body>
+</html>

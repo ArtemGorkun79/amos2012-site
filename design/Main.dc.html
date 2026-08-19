@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Golos+Text:wght@500;600;700;900&family=Manrope:wght@400;500;600;700&display=swap');
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { font-family: 'Manrope', system-ui, sans-serif; color: oklch(20% 0.01 240); background: oklch(98% 0.004 90); text-wrap: pretty; }
+    h1, h2, h3 { font-family: 'Golos Text', sans-serif; margin: 0; }
+    p { margin: 0; }
+    a { color: oklch(72% 0.13 55); text-decoration: none; }
+    a:hover { color: oklch(60% 0.13 55); }
+    button { font-family: 'Manrope', sans-serif; cursor: pointer; border: none; }
+    input, textarea { font-family: 'Manrope', sans-serif; }
+    .lang-btn { background: transparent; border: none; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; padding: 4px 6px; }
+    .nav-link { font-size: 14px; font-weight: 500; color: oklch(30% 0.01 240); }
+    .value-card { display:flex; flex-direction:column; gap:14px; padding:28px; background:oklch(99% 0.002 90); border:1px solid oklch(91% 0.005 90); border-radius:2px; }
+    .field-label { font-size:12px; font-weight:600; letter-spacing:0.04em; color:oklch(85% 0.01 240); text-transform:uppercase; }
+    .field-input { padding:12px 14px; border:1px solid oklch(40% 0.02 220); background:transparent; color:oklch(97% 0.004 90); font-size:14px; border-radius:2px; }
+    .field-input::placeholder { color:oklch(55% 0.02 220); }
+  </style>
+</helmet>
+
+<div style="width:100%; min-width:960px; display:flex; flex-direction:column;">
+
+  <!-- HEADER -->
+  <header style="position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; padding:18px 64px; background:oklch(99% 0.002 90 / 0.96); border-bottom:1px solid oklch(91% 0.005 90); backdrop-filter:blur(6px);">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <svg width="30" height="30" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 6L46 44H32L26 32L20 44H6L26 6Z" fill="{{teal}}"/>
+        <rect x="23" y="6" width="6" height="6" fill="{{accent}}"/>
+      </svg>
+      <div style="display:flex; flex-direction:column; line-height:1;">
+        <div style="font-family:'Golos Text', sans-serif; font-weight:900; font-size:17px; color:{{teal}};">AMOS</div>
+        <div style="font-family:'Golos Text', sans-serif; font-weight:600; font-size:9px; letter-spacing:0.24em; color:{{accent}};">2012</div>
+      </div>
+    </div>
+
+    <nav style="display:flex; align-items:center; gap:36px;">
+      <sc-for list="{{nav}}" as="item" hint-placeholder-count="3">
+        <a class="nav-link" href="#">{{item}}</a>
+      </sc-for>
+    </nav>
+
+    <div style="display:flex; align-items:center; gap:2px;">
+      <button class="lang-btn" style="color:{{uaColor}}" onClick="{{setUa}}">UA</button>
+      <span style="color:oklch(85% 0.005 90); font-size:12px;">/</span>
+      <button class="lang-btn" style="color:{{enColor}}" onClick="{{setEn}}">EN</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section style="position:relative; overflow:hidden; padding:120px 64px 130px; background:{{teal}};">
+    <svg style="position:absolute; top:-120px; right:-80px; opacity:0.5;" width="620" height="620" viewBox="0 0 620 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="310" cy="310" r="309" stroke="oklch(97% 0.004 90 / 0.08)" stroke-width="1"/>
+      <circle cx="310" cy="310" r="230" stroke="oklch(97% 0.004 90 / 0.10)" stroke-width="1"/>
+      <circle cx="310" cy="310" r="150" stroke="{{accent}}" stroke-opacity="0.35" stroke-width="1"/>
+    </svg>
+    <div style="position:relative; max-width:640px; display:flex; flex-direction:column; gap:28px;">
+      <div style="display:flex; align-items:center; gap:10px;">
+        <div style="width:28px; height:2px; background:{{accent}};"></div>
+        <span style="font-size:13px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:{{accent}};">AMOS 2012</span>
+      </div>
+      <h1 style="font-size:52px; line-height:1.12; font-weight:700; color:oklch(98% 0.004 90);">{{heroHeading}}</h1>
+      <p style="font-size:17px; line-height:1.6; color:oklch(85% 0.01 200); max-width:520px;">{{heroSub}}</p>
+      <div style="display:flex; gap:14px; margin-top:8px;">
+        <button style="padding:14px 28px; background:{{accent}}; color:oklch(18% 0.02 60); font-size:14px; font-weight:700; border-radius:2px;">{{heroCta}}</button>
+        <button style="padding:14px 28px; background:transparent; border:1px solid oklch(97% 0.004 90 / 0.3); color:oklch(97% 0.004 90); font-size:14px; font-weight:600; border-radius:2px;">{{navAbout}}</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section style="display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap:80px; padding:110px 64px; align-items:center;">
+    <div style="display:flex; flex-direction:column; gap:20px;">
+      <span style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:{{accent}};">{{aboutKicker}}</span>
+      <h2 style="font-size:34px; font-weight:700; color:oklch(20% 0.01 240);">{{aboutHeading}}</h2>
+      <p style="font-size:16px; line-height:1.75; color:oklch(42% 0.01 240);">{{aboutBody}}</p>
+    </div>
+    <div style="position:relative; display:flex; align-items:center; justify-content:center; height:340px;">
+      <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150 20L272 80V220L150 280L28 220V80L150 20Z" stroke="{{teal}}" stroke-width="1.5" opacity="0.55"/>
+        <path d="M150 70L212 210H182L150 150L118 210H88L150 70Z" fill="{{teal}}" opacity="0.9"/>
+        <rect x="140" y="70" width="20" height="20" fill="{{accent}}"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section style="padding:110px 64px; background:oklch(96% 0.005 90);">
+    <div style="display:flex; flex-direction:column; gap:14px; max-width:560px; margin-bottom:56px;">
+      <span style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:{{accent}};">{{valuesKicker}}</span>
+      <h2 style="font-size:34px; font-weight:700; color:oklch(20% 0.01 240);">{{valuesHeading}}</h2>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:20px;">
+      <div class="value-card">
+        <div style="width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:{{teal}}; border-radius:2px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <h3 style="font-size:17px; font-weight:700; color:oklch(20% 0.01 240);">{{values.0.title}}</h3>
+        <p style="font-size:14px; line-height:1.6; color:oklch(45% 0.01 240);">{{values.0.desc}}</p>
+      </div>
+      <div class="value-card">
+        <div style="width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:{{teal}}; border-radius:2px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="8" cy="12" r="4"/><circle cx="16" cy="12" r="4"/></svg>
+        </div>
+        <h3 style="font-size:17px; font-weight:700; color:oklch(20% 0.01 240);">{{values.1.title}}</h3>
+        <p style="font-size:14px; line-height:1.6; color:oklch(45% 0.01 240);">{{values.1.desc}}</p>
+      </div>
+      <div class="value-card">
+        <div style="width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:{{teal}}; border-radius:2px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M12 3l2.6 5.6L21 9.3l-4.5 4.2L17.6 20 12 16.8 6.4 20l1.1-6.5L3 9.3l6.4-.7L12 3z"/></svg>
+        </div>
+        <h3 style="font-size:17px; font-weight:700; color:oklch(20% 0.01 240);">{{values.2.title}}</h3>
+        <p style="font-size:14px; line-height:1.6; color:oklch(45% 0.01 240);">{{values.2.desc}}</p>
+      </div>
+      <div class="value-card">
+        <div style="width:40px; height:40px; display:flex; align-items:center; justify-content:center; background:{{teal}}; border-radius:2px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg>
+        </div>
+        <h3 style="font-size:17px; font-weight:700; color:oklch(20% 0.01 240);">{{values.3.title}}</h3>
+        <p style="font-size:14px; line-height:1.6; color:oklch(45% 0.01 240);">{{values.3.desc}}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section style="display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1.1fr); gap:0; background:{{graphite}};">
+    <div style="padding:110px 64px; display:flex; flex-direction:column; gap:28px; justify-content:center;">
+      <span style="font-size:13px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:{{accent}};">{{contactKicker}}</span>
+      <h2 style="font-size:32px; font-weight:700; color:oklch(97% 0.004 90); max-width:380px;">{{contactHeading}}</h2>
+      <p style="font-size:15px; line-height:1.7; color:oklch(72% 0.01 220); max-width:380px;">{{contactSub}}</p>
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:12px; font-size:14px; color:oklch(80% 0.01 220);">
+        <div>{{addrLabel}}: {{addrValue}}</div>
+        <div>{{phoneLabel}}: {{phoneValue}}</div>
+        <div>{{emailLabel}}: {{emailValue}}</div>
+      </div>
+    </div>
+    <div style="padding:110px 64px; display:flex; align-items:center;">
+      <div style="width:100%; max-width:420px; display:flex; flex-direction:column; gap:18px; padding:36px; background:oklch(22% 0.01 240); border:1px solid oklch(35% 0.015 230); border-radius:2px;">
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span class="field-label">{{nameLabel}}</span>
+          <input class="field-input" placeholder="—">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span class="field-label">Email</span>
+          <input class="field-input" placeholder="—">
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <span class="field-label">{{messageLabel}}</span>
+          <textarea class="field-input" rows="4" placeholder="—" style="resize:none; font-size:14px;"></textarea>
+        </div>
+        <button style="margin-top:6px; padding:14px; background:{{accent}}; color:oklch(18% 0.02 60); font-size:14px; font-weight:700; border-radius:2px;">{{sendLabel}}</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="display:flex; align-items:center; justify-content:space-between; padding:26px 64px; background:oklch(16% 0.008 240);">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <svg width="18" height="18" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26 6L46 44H32L26 32L20 44H6L26 6Z" fill="oklch(60% 0.02 220)"/>
+        <rect x="23" y="6" width="6" height="6" fill="{{accent}}"/>
+      </svg>
+      <span style="font-size:12px; color:oklch(60% 0.01 220);">AMOS 2012</span>
+    </div>
+    <div style="font-size:12px; color:oklch(55% 0.01 220);">{{footerText}}</div>
+  </footer>
+
+</div>
+</x-dc>
+<script data-dc-script data-props='{"teal":{"editor":"color","default":"oklch(27% 0.045 195)"},"graphite":{"editor":"color","default":"oklch(20% 0.01 240)"},"accent":{"editor":"color","default":"oklch(72% 0.13 55)"},"locale":{"editor":"enum","options":["ua","en"],"default":"ua"}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { locale: this.props.locale ?? 'ua' };
+  }
+
+  renderVals() {
+    const teal = this.props.teal ?? 'oklch(27% 0.045 195)';
+    const graphite = this.props.graphite ?? 'oklch(20% 0.01 240)';
+    const accent = this.props.accent ?? 'oklch(72% 0.13 55)';
+    const locale = this.state.locale ?? 'ua';
+
+    const copy = {
+      ua: {
+        nav: ['Про нас', 'Послуги', 'Контакти'],
+        heroHeading: 'Надійність, що будує результат',
+        heroSub: 'AMOS 2012 — [короткий опис сфери діяльності компанії].',
+        heroCta: "Зв'язатися з нами",
+        navAbout: 'Про нас',
+        aboutKicker: 'Про компанію',
+        aboutHeading: 'Хто ми',
+        aboutBody: '[Тут буде розгорнутий опис AMOS 2012: історія компанії, ключові напрямки діяльності та підхід до співпраці з партнерами.]',
+        valuesKicker: 'Принципи роботи',
+        valuesHeading: 'Наші цінності',
+        values: [
+          { title: 'Надійність', desc: 'Виконуємо зобов’язання та тримаємо слово в кожній угоді.' },
+          { title: 'Партнерство', desc: 'Будуємо довгострокові відносини на основі довіри.' },
+          { title: 'Досвід', desc: 'Глибоке розуміння галузі та професійний підхід.' },
+          { title: 'Прозорість', desc: 'Відкрита комунікація на кожному етапі співпраці.' }
+        ],
+        contactKicker: "Зв'язок",
+        contactHeading: "Зв'яжіться з нами",
+        contactSub: 'Залиште повідомлення — ми відповімо найближчим часом.',
+        addrLabel: 'Адреса', addrValue: '[адреса]',
+        phoneLabel: 'Телефон', phoneValue: '[телефон]',
+        emailLabel: 'Email', emailValue: '[email]',
+        nameLabel: "Ім'я", messageLabel: 'Повідомлення', sendLabel: 'Надіслати',
+        footerText: '© 2026 AMOS 2012. Всі права захищені.'
+      },
+      en: {
+        nav: ['About', 'Services', 'Contacts'],
+        heroHeading: 'Reliability that builds results',
+        heroSub: "AMOS 2012 — [short description of the company's field of activity].",
+        heroCta: 'Get in touch',
+        navAbout: 'About',
+        aboutKicker: 'About the company',
+        aboutHeading: 'Who we are',
+        aboutBody: '[A fuller description of AMOS 2012 goes here: company history, core areas of activity, and approach to partnerships.]',
+        valuesKicker: 'How we work',
+        valuesHeading: 'Our values',
+        values: [
+          { title: 'Reliability', desc: 'We honor our commitments and keep our word in every agreement.' },
+          { title: 'Partnership', desc: 'We build long-term relationships based on trust.' },
+          { title: 'Expertise', desc: 'Deep industry understanding and a professional approach.' },
+          { title: 'Transparency', desc: 'Open communication at every stage of cooperation.' }
+        ],
+        contactKicker: 'Get in touch',
+        contactHeading: 'Get in touch',
+        contactSub: "Leave a message — we'll respond shortly.",
+        addrLabel: 'Address', addrValue: '[address]',
+        phoneLabel: 'Phone', phoneValue: '[phone]',
+        emailLabel: 'Email', emailValue: '[email]',
+        nameLabel: 'Name', messageLabel: 'Message', sendLabel: 'Send',
+        footerText: '© 2026 AMOS 2012. All rights reserved.'
+      }
+    };
+
+    const t = copy[locale];
+
+    return {
+      teal, graphite, accent,
+      uaColor: locale === 'ua' ? teal : 'oklch(55% 0.01 240)',
+      enColor: locale === 'en' ? teal : 'oklch(55% 0.01 240)',
+      setUa: () => this.setState({ locale: 'ua' }),
+      setEn: () => this.setState({ locale: 'en' }),
+      ...t
+    };
+  }
+}
+</script>
+</body>
+</html>
