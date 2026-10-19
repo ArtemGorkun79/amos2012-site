@@ -397,13 +397,11 @@ def regulatory_body(lang):
 def contacts_body(lang):
     t = {
         "uk": dict(kicker="Контакти", h1="Зв'яжіться з нами", lead="Залиште повідомлення, і ми відповімо найближчим часом.",
-                   addr_l="Адреса", addr_v="[адреса]", phone_l="Телефон", phone_v="[телефон]", email_v="[email]",
-                   name_l="Ім'я", msg_l="Повідомлення", send="Надіслати",
-                   note="Форма використовує сервіс Web3Forms — потрібно додати власний access key."),
+                   addr_l="Адреса", addr_v="[адреса]", phone_l="Телефон", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v="[email]",
+                   name_l="Ім'я", msg_l="Повідомлення", send="Надіслати"),
         "en": dict(kicker="Contacts", h1="Get in touch", lead="Leave a message and we'll respond shortly.",
-                   addr_l="Address", addr_v="[address]", phone_l="Phone", phone_v="[phone]", email_v="[email]",
-                   name_l="Name", msg_l="Message", send="Send",
-                   note="This form uses Web3Forms — add your own access key before launch."),
+                   addr_l="Address", addr_v="[address]", phone_l="Phone", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v="[email]",
+                   name_l="Name", msg_l="Message", send="Send"),
     }[lang]
 
     return f'''<div class="page-head"><div class="page-head-inner">
@@ -436,7 +434,6 @@ def contacts_body(lang):
         <textarea class="field-input" name="message" rows="4" required></textarea>
       </div>
       <button class="btn-primary" type="submit">{t["send"]}</button>
-      <span class="form-note">{t["note"]}</span>
     </form>
   </div>
 </div></section>'''
