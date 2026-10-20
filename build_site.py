@@ -9,6 +9,7 @@ SLUG_PATH = {
     "risk": "risk-management",
     "regulatory": "regulatory-documents",
     "contacts": "contacts",
+    "thanks": "thanks",
 }
 
 NAV_ORDER = ["home", "about", "partners", "risk", "regulatory", "contacts"]
@@ -44,6 +45,10 @@ META = {
     "contacts": {
         "uk": ("Контакти — AMOS 2012", "Зв'яжіться з AMOS 2012."),
         "en": ("Contacts — AMOS 2012", "Get in touch with AMOS 2012."),
+    },
+    "thanks": {
+        "uk": ("Дякуємо — AMOS 2012", "Ваше повідомлення надіслано."),
+        "en": ("Thank you — AMOS 2012", "Your message has been sent."),
     },
 }
 
@@ -398,10 +403,10 @@ def contacts_body(lang):
     t = {
         "uk": dict(kicker="Контакти", h1="Зв'яжіться з нами", lead="Залиште повідомлення, і ми відповімо найближчим часом.",
                    addr_l="Адреса", addr_v="[адреса]", phone_l="Телефон", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v="[email]",
-                   name_l="Ім'я", msg_l="Повідомлення", send="Надіслати"),
+                   name_l="Ім'я", msg_l="Повідомлення", send="Надіслати", subject="Нове повідомлення з сайту amos2012.com"),
         "en": dict(kicker="Contacts", h1="Get in touch", lead="Leave a message and we'll respond shortly.",
                    addr_l="Address", addr_v="[address]", phone_l="Phone", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v="[email]",
-                   name_l="Name", msg_l="Message", send="Send"),
+                   name_l="Name", msg_l="Message", send="Send", subject="New message from amos2012.com"),
     }[lang]
 
     return f'''<div class="page-head"><div class="page-head-inner">
@@ -418,9 +423,12 @@ def contacts_body(lang):
     </div>
   </div>
   <div class="contact-form-wrap">
-    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
-      <input type="hidden" name="access_key" value="REPLACE_WITH_WEB3FORMS_ACCESS_KEY">
-      <input type="checkbox" name="botcheck" class="form-honeypot" tabindex="-1" autocomplete="off">
+    <form class="contact-form" action="https://formsubmit.co/amos2012v@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="{t["subject"]}">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://amos2012.com{href('thanks', lang)}">
+      <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off">
       <div class="field-group">
         <span class="field-label">{t["name_l"]}</span>
         <input class="field-input" type="text" name="name" required>
@@ -439,6 +447,19 @@ def contacts_body(lang):
 </div></section>'''
 
 
+def thanks_body(lang):
+    t = {
+        "uk": dict(kicker="Контакти", h1="Дякуємо!", lead="Ваше повідомлення надіслано. Ми зв'яжемося з вами найближчим часом.", btn="На головну"),
+        "en": dict(kicker="Contacts", h1="Thank you!", lead="Your message has been sent. We'll get back to you shortly.", btn="Back to home"),
+    }[lang]
+    return f'''<div class="page-head"><div class="page-head-inner">
+  <span class="site-kicker">{t["kicker"]}</span>
+  <h1>{t["h1"]}</h1>
+  <p>{t["lead"]}</p>
+  <p style="margin-top:24px;"><a class="btn-primary" href="{href('home', lang)}">{t["btn"]}</a></p>
+</div></div>'''
+
+
 BODY_FN = {
     "home": home_body,
     "about": about_body,
@@ -446,6 +467,7 @@ BODY_FN = {
     "risk": risk_body,
     "regulatory": regulatory_body,
     "contacts": contacts_body,
+    "thanks": thanks_body,
 }
 
 
@@ -522,7 +544,7 @@ def write(path, content):
         f.write(content)
 
 
-for slug in NAV_ORDER:
+for slug in NAV_ORDER + ["thanks"]:
     for lang in ("uk", "en"):
         seg = SLUG_PATH[slug]
         prefix = "en/" if lang == "en" else ""
