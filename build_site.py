@@ -423,7 +423,7 @@ def contacts_body(lang):
     </div>
   </div>
   <div class="contact-form-wrap">
-    <form class="contact-form" action="https://formsubmit.co/amos2012v@gmail.com" method="POST">
+    <form class="contact-form" action="https://formsubmit.co/808d5fee2790d9af839266c80be895e3" method="POST">
       <input type="hidden" name="_subject" value="{t["subject"]}">
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
