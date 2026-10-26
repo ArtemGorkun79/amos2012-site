@@ -402,10 +402,10 @@ def regulatory_body(lang):
 def contacts_body(lang):
     t = {
         "uk": dict(kicker="Контакти", h1="Зв'яжіться з нами", lead="Залиште повідомлення, і ми відповімо найближчим часом.",
-                   addr_l="Адреса", addr_v="04073, місто Київ, проспект Степана Бандери, будинок 16, офіс 506/3", phone_l="Телефон", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:amos2012v@gmail.com">amos2012v@gmail.com</a>',
+                   addr_l="Адреса", addr_v="04073, місто Київ, проспект Степана Бандери, будинок 16, офіс 506/3", phone_l="Телефон", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:info@amos2012.com">info@amos2012.com</a>',
                    name_l="Ім'я", msg_l="Повідомлення", send="Надіслати", subject="Нове повідомлення з сайту amos2012.com"),
         "en": dict(kicker="Contacts", h1="Get in touch", lead="Leave a message and we'll respond shortly.",
-                   addr_l="Address", addr_v="Office 506/3, 16 Stepana Bandery Ave., Kyiv, 04073, Ukraine", phone_l="Phone", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:amos2012v@gmail.com">amos2012v@gmail.com</a>',
+                   addr_l="Address", addr_v="Office 506/3, 16 Stepana Bandery Ave., Kyiv, 04073, Ukraine", phone_l="Phone", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:info@amos2012.com">info@amos2012.com</a>',
                    name_l="Name", msg_l="Message", send="Send", subject="New message from amos2012.com"),
     }[lang]
 
