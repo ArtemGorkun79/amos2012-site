@@ -383,7 +383,7 @@ def regulatory_body(lang):
                   "Постанова НКРЕКП про Порядок ліцензування видів господарської діяльності у сферах енергетики та комунальних послуг",
                   "Постанова НКРЕКП про Ліцензійні умови перепродажу електричної енергії (трейдерської діяльності)",
                   "НКРЕКП — офіційний вебпортал"],
-            pending="Ліцензія на право провадження діяльності з постачання електричної енергії — AMOS 2012",
+            pending="Ліцензія з перепродажу електричної енергії (трейдерської діяльності) — AMOS 2012",
             badge="Очікується",
         ),
         "en": dict(
@@ -405,7 +405,7 @@ def regulatory_body(lang):
                   "NKREKP Resolution on the Procedure for Licensing Activities in the Energy and Utilities Sectors",
                   "NKREKP Resolution on Licensing Conditions for Electricity Resale (Trading)",
                   "NKREKP — official portal"],
-            pending="License for the supply of electricity — AMOS 2012",
+            pending="License for electricity resale (trading activity) — AMOS 2012",
             badge="Pending",
         ),
     }[lang]
