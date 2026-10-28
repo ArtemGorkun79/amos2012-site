@@ -356,6 +356,8 @@ DOC_URLS = [
     "https://zakon.rada.gov.ua/laws/show/v0308874-18",
     "https://zakon.rada.gov.ua/laws/show/v1469874-17",
     "https://zakon.rada.gov.ua/laws/show/v0311874-18",
+    "https://zakon.rada.gov.ua/laws/show/v0548874-20",
+    "https://zakon.rada.gov.ua/laws/show/v1468874-17",
     "https://www.nerc.gov.ua/",
 ]
 
@@ -378,6 +380,8 @@ def regulatory_body(lang):
                   "Постанова НКРЕКП про Правила ринку «на добу наперед» та внутрішньодобового ринку",
                   "Постанова НКРЕКП про Ліцензійні умови постачання електричної енергії",
                   "Постанова НКРЕКП про Кодекс комерційного обліку електричної енергії",
+                  "Постанова НКРЕКП про Порядок ліцензування видів господарської діяльності у сферах енергетики та комунальних послуг",
+                  "Постанова НКРЕКП про Ліцензійні умови перепродажу електричної енергії (трейдерської діяльності)",
                   "НКРЕКП — офіційний вебпортал"],
             pending="Ліцензія на право провадження діяльності з постачання електричної енергії — AMOS 2012",
             badge="Очікується",
@@ -398,6 +402,8 @@ def regulatory_body(lang):
                   "NKREKP Resolution on Day-Ahead and Intraday Market Rules",
                   "NKREKP Resolution on Electricity Supply Licensing Conditions",
                   "NKREKP Resolution on the Commercial Metering Code",
+                  "NKREKP Resolution on the Procedure for Licensing Activities in the Energy and Utilities Sectors",
+                  "NKREKP Resolution on Licensing Conditions for Electricity Resale (Trading)",
                   "NKREKP — official portal"],
             pending="License for the supply of electricity — AMOS 2012",
             badge="Pending",
