@@ -28,7 +28,7 @@ META = {
     },
     "about": {
         "uk": ("Про нас — AMOS 2012", "Компетенції та підхід AMOS 2012 до торгівлі електричною енергією."),
-        "en": ("About us — AMOS 2012", "AMOS 2012's competencies and approach to electricity trading."),
+        "en": ("About us — AMOS 2012", "Competencies and approach of AMOS 2012 to electricity trading."),
     },
     "partners": {
         "uk": ("Партнерам — AMOS 2012", "Умови співпраці з AMOS 2012 та коло потенційних партнерів."),
@@ -40,7 +40,7 @@ META = {
     },
     "regulatory": {
         "uk": ("Нормативно-правові акти — AMOS 2012", "Перелік нормативно-правових актів, що регулюють діяльність AMOS 2012."),
-        "en": ("Regulatory documents — AMOS 2012", "Regulations and legal acts governing AMOS 2012's activity."),
+        "en": ("Regulatory documents — AMOS 2012", "Regulations and legal acts governing the activity of AMOS 2012."),
     },
     "contacts": {
         "uk": ("Контакти — AMOS 2012", "Зв'яжіться з AMOS 2012."),
@@ -103,11 +103,11 @@ def chip_grid(items):
     return f'<div class="chip-grid">{spans}</div>'
 
 
-def doc_row(text, pending=False, badge=None):
+def doc_row(text, url=None, pending=False, badge=None):
     if pending:
         return (f'<div class="doc-row pending">{ICONS["badge"]}<span>{text}</span>'
                 f'<span class="pending-badge">{badge}</span></div>')
-    return f'<div class="doc-row">{ICONS["doc"]}<span>{text}</span></div>'
+    return f'<a class="doc-row" href="{url}" target="_blank" rel="noopener noreferrer">{ICONS["doc"]}<span>{text}</span></a>'
 
 
 def home_body(lang):
@@ -318,7 +318,7 @@ def risk_body(lang):
         ),
         "en": dict(
             kicker="Risk management", h1="Risk management",
-            lead="Risk management is an integral part of AMOS 2012's daily operations.",
+            lead="Risk management is an integral part of the daily operations of AMOS 2012.",
             h_risks="Risks we manage",
             risks=[("chart", "Price risk"), ("rings", "Counterparty credit risk"),
                    ("axis", "Liquidity risk"), ("badge", "Regulatory risk")],
@@ -340,6 +340,24 @@ def risk_body(lang):
   <div class="list-block"><h3>{t["h_risks"]}</h3><div class="mini-grid">{risks_html}</div></div>
   <div class="list-block"><h3>{t["h_tools"]}</h3><div class="mini-grid">{tools_html}</div></div>
 </div></section>'''
+
+
+DOC_URLS = [
+    "https://www.kmu.gov.ua/",
+    "https://zakon.rada.gov.ua/laws/show/2019-19",
+    "https://zakon.rada.gov.ua/laws/show/222-19",
+    "https://zakon.rada.gov.ua/laws/show/393/96-%D0%B2%D1%80",
+    "https://zakon.rada.gov.ua/laws/show/2939-17",
+    "https://zakon.rada.gov.ua/laws/show/2297-17",
+    "https://zakon.rada.gov.ua/laws/show/1023-12",
+    "https://zakon.rada.gov.ua/laws/show/v0307874-18",
+    "https://zakon.rada.gov.ua/laws/show/v0309874-18",
+    "https://zakon.rada.gov.ua/laws/show/v0310874-18",
+    "https://zakon.rada.gov.ua/laws/show/v0308874-18",
+    "https://zakon.rada.gov.ua/laws/show/v1469874-17",
+    "https://zakon.rada.gov.ua/laws/show/v0311874-18",
+    "https://www.nerc.gov.ua/",
+]
 
 
 def regulatory_body(lang):
@@ -366,7 +384,7 @@ def regulatory_body(lang):
         ),
         "en": dict(
             kicker="Documents", h1="Regulatory documents",
-            lead="Key regulations and legal acts governing AMOS 2012's activity on Ukraine's electricity market.",
+            lead="Key regulations and legal acts governing the activity of AMOS 2012 on Ukraine's electricity market.",
             docs=["Cabinet of Ministers of Ukraine — official portal",
                   'Law of Ukraine "On the Electricity Market" No. 2019-VIII',
                   'Law "On Licensing of Business Activities"',
@@ -386,7 +404,7 @@ def regulatory_body(lang):
         ),
     }[lang]
 
-    rows = "".join(doc_row(d) for d in t["docs"])
+    rows = "".join(doc_row(d, u) for d, u in zip(t["docs"], DOC_URLS))
     rows += doc_row(t["pending"], pending=True, badge=t["badge"])
 
     return f'''<div class="page-head"><div class="page-head-inner">
@@ -402,10 +420,10 @@ def regulatory_body(lang):
 def contacts_body(lang):
     t = {
         "uk": dict(kicker="Контакти", h1="Зв'яжіться з нами", lead="Залиште повідомлення, і ми відповімо найближчим часом.",
-                   addr_l="Адреса", addr_v="04073, місто Київ, проспект Степана Бандери, будинок 16, офіс 506/3", phone_l="Телефон", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:info@amos2012.com">info@amos2012.com</a>',
+                   hours="Режим роботи: ПН-ПТ, з 9:00 до 18:00", addr_l="Адреса", addr_v="04073, місто Київ, проспект Степана Бандери, будинок 16, офіс 506/3", phone_l="Телефон", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:amos2012v@gmail.com">amos2012v@gmail.com</a>',
                    name_l="Ім'я", msg_l="Повідомлення", send="Надіслати", subject="Нове повідомлення з сайту amos2012.com"),
         "en": dict(kicker="Contacts", h1="Get in touch", lead="Leave a message and we'll respond shortly.",
-                   addr_l="Address", addr_v="Office 506/3, 16 Stepana Bandery Ave., Kyiv, 04073, Ukraine", phone_l="Phone", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:info@amos2012.com">info@amos2012.com</a>',
+                   hours="Working hours: Mon–Fri, 9:00 a.m. – 6:00 p.m.", addr_l="Address", addr_v="Office 506/3, 16 Stepana Bandery Ave., Kyiv, 04073, Ukraine", phone_l="Phone", phone_v='<a href="tel:+380978019662">+380 97 801 96 62</a>', email_v='<a href="mailto:amos2012v@gmail.com">amos2012v@gmail.com</a>',
                    name_l="Name", msg_l="Message", send="Send", subject="New message from amos2012.com"),
     }[lang]
 
@@ -418,6 +436,7 @@ def contacts_body(lang):
   <div class="contact-info">
     <div class="contact-fields">
       <div>{t["addr_l"]}: {t["addr_v"]}</div>
+      <div>{t["hours"]}</div>
       <div>{t["phone_l"]}: {t["phone_v"]}</div>
       <div>Email: {t["email_v"]}</div>
     </div>
@@ -471,8 +490,14 @@ BODY_FN = {
 }
 
 
+COMPANY_RAW = "AMOS 2012"
+COMPANY_HTML = 'ТОВ "Амос 2012"'
+COMPANY_ATTR = 'ТОВ &quot;Амос 2012&quot;'
+
+
 def render_page(slug, lang):
     title, desc = META[slug][lang]
+    desc = desc.replace(COMPANY_RAW, COMPANY_ATTR)
     other_lang = "en" if lang == "uk" else "uk"
 
     nav_items = "".join(
@@ -534,7 +559,7 @@ def render_page(slug, lang):
 <script src="/assets/js/main.js"></script>
 </body>
 </html>
-'''
+'''.replace(COMPANY_RAW, COMPANY_HTML)
 
 
 def write(path, content):
