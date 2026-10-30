@@ -345,7 +345,6 @@ def risk_body(lang):
 DOC_URLS = [
     "https://www.kmu.gov.ua/",
     "https://zakon.rada.gov.ua/laws/show/2019-19",
-    "https://zakon.rada.gov.ua/laws/show/222-19",
     "https://zakon.rada.gov.ua/laws/show/393/96-%D0%B2%D1%80",
     "https://zakon.rada.gov.ua/laws/show/2939-17",
     "https://zakon.rada.gov.ua/laws/show/2297-17",
@@ -369,7 +368,6 @@ def regulatory_body(lang):
             lead="Перелік ключових нормативно-правових актів, що регулюють діяльність AMOS 2012 на ринку електричної енергії України.",
             docs=["Кабінет Міністрів України — офіційний вебпортал",
                   "Закон України «Про ринок електричної енергії» № 2019-VIII",
-                  "Закон України «Про ліцензування видів господарської діяльності»",
                   "Закон України «Про звернення громадян»",
                   "Закон України «Про доступ до публічної інформації»",
                   "Закон України «Про захист персональних даних»",
@@ -391,7 +389,6 @@ def regulatory_body(lang):
             lead="Key regulations and legal acts governing the activity of AMOS 2012 on Ukraine's electricity market.",
             docs=["Cabinet of Ministers of Ukraine — official portal",
                   'Law of Ukraine "On the Electricity Market" No. 2019-VIII',
-                  'Law "On Licensing of Business Activities"',
                   'Law "On Citizens\' Appeals"',
                   'Law "On Access to Public Information"',
                   'Law "On Personal Data Protection"',
